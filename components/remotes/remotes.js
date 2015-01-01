@@ -93,3 +93,7 @@ RemotesViewModel.prototype.showAddRemoteDialog = function() {
   });
   programEvents.dispatch({ event: 'request-show-dialog', dialog: diag });
 }
+
+RemotesViewModel.prototype.showCherryPickWithURL = function() {
+  console.log("yo");
+}
