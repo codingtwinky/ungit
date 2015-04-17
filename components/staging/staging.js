@@ -288,12 +288,8 @@ var FileViewModel = function(staging, name, fileType, textDiffType) {
   this.showingDiffs = ko.observable(false);
   this.diffsProgressBar = components.create('progressBar', { predictionMemoryKey: 'diffs-' + this.staging.repoPath, temporary: true });
   this.diffType = ko.computed(function() {
-    if (!self.name()) {
+    if (!self.name() || fileType === 'text') {
       return 'textdiff';
-    }
-
-    if (fileType === 'text') {
-      return self.isNew() ? 'textdiff' : textDiffType();
     } else {
       return 'imagediff';
     }
@@ -301,8 +297,7 @@ var FileViewModel = function(staging, name, fileType, textDiffType) {
   this.diff = ko.observable(self.getSpecificDiff());
 
   textDiffType.subscribe(function(diffType) {
-    self.diff(self.getSpecificDiff());
-    self.specificDiff().diffType(diffType);
+    self.diff().diffType(diffType);
     self.invalidateDiff(true);
   });
 }
@@ -310,8 +305,7 @@ FileViewModel.prototype.getSpecificDiff = function() {
   return components.create(this.diffType(), {
     filename: this.name(),
     repoPath: this.staging.repoPath,
-    server: this.server,
-    initialDisplayLineLimit: 50     //Image diff doesn't use this so it doesn't matter.
+    server: this.server
   });
 }
 FileViewModel.prototype.setState = function(state) {
