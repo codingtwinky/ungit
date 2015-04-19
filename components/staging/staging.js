@@ -283,7 +283,7 @@ var FileViewModel = function(staging, name, textDiffType) {
   this.isNew = ko.observable(false);
   this.removed = ko.observable(false);
   this.conflict = ko.observable(false);
-  this.showingDiffs = ko.observable(false);
+  this.isShowingDiffs = ko.observable(false);
   this.diffsProgressBar = components.create('progressBar', { predictionMemoryKey: 'diffs-' + this.staging.repoPath, temporary: true });
   this.textDiffType = textDiffType;
   this.diff = ko.observable(self.getSpecificDiff());
@@ -294,7 +294,7 @@ FileViewModel.prototype.getSpecificDiff = function() {
     repoPath: this.staging.repoPath,
     server: this.server,
     textDiffType: this.textDiffType,
-    showingDiffs: this.showingDiffs
+    isShowingDiffs: this.isShowingDiffs
   });
 }
 FileViewModel.prototype.setState = function(state) {
@@ -329,10 +329,10 @@ FileViewModel.prototype.resolveConflict = function() {
   this.server.post('/resolveconflicts', { path: this.staging.repoPath, files: [this.name()] });
 }
 FileViewModel.prototype.toggleDiffs = function() {
-  if (this.showingDiffs()) {
-    this.showingDiffs(false);
+  if (this.isShowingDiffs()) {
+    this.isShowingDiffs(false);
   } else {
-    this.showingDiffs(true);
+    this.isShowingDiffs(true);
     this.invalidateDiff(true);
   }
 }
