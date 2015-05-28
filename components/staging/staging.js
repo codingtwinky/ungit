@@ -95,7 +95,6 @@ StagingViewModel.prototype.setAheadAndBehind = function() {
       console.log("error while acquiring behind info", err);
       return;
     }
-    console.log(behind);
     self.behind(behind ? behind.split('\n') : []);
   });
 }
