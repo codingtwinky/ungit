@@ -1,5 +1,7 @@
 ungit
 ======
+
+[![Join the chat at https://gitter.im/codingtwinky/ungit](https://badges.gitter.im/codingtwinky/ungit.svg)](https://gitter.im/codingtwinky/ungit?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![NPM version](https://badge.fury.io/js/ungit.svg)](http://badge.fury.io/js/ungit)
 [![Build Status](https://travis-ci.org/FredrikNoren/ungit.svg)](https://travis-ci.org/FredrikNoren/ungit)
 
