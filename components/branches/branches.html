@@ -9,6 +9,13 @@
   <ul class="dropdown-menu pull-right" role="menu">
     <div class="option" onclick="event.stopPropagation()">
       <label>
+        <span class="octicon octicon-search bootstrap-tooltip" data-toggle="tooltip" data-placement="bottom" title="Search for a branch or tag"></span>
+        <input class="name form-control" type="text" data-bind="valueUpdate: 'afterkeydown'"/>
+      </label>
+    </div>
+    <div class="dropdown-divider"></div>
+    <div class="option" onclick="event.stopPropagation()">
+      <label>
         Remote
         <input type="checkbox" data-bind="checked: isShowRemote"/>
       </label>
